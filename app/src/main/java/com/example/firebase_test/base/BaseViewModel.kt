@@ -9,7 +9,7 @@ abstract class BaseViewModel : ViewModel() {
 
     var errorDialogWatcher = MutableLiveData<String>()
 
-    var errorToastyWatcher = MutableLiveData<String>()
+    var errorToastWatcher = MutableLiveData<String>()
 
     private val mCompositeDisposable = CompositeDisposable()
 

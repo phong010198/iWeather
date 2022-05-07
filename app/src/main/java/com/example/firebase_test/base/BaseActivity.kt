@@ -53,13 +53,13 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
     abstract fun setupObserver()
 
     private fun setupErrorWatcher() {
-        viewModel.errorDialogWatcher.observe(this, Observer {
+        viewModel.errorDialogWatcher.observe(this) {
             showAlertDialog(getString(R.string.app_name), it)
-        })
+        }
 
-        viewModel.errorToastyWatcher.observe(this, Observer {
+        viewModel.errorToastWatcher.observe(this) {
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
-        })
+        }
     }
 
     private fun showAlertDialog(title: String, message: String) {

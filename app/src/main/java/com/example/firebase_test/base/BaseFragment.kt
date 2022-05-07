@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.example.firebase_test.ui.MainViewModel
 
 abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment() {
     val MY_PREFS_NAME = "MyPrefsFile"
@@ -28,6 +30,8 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment()
 
     @get:LayoutRes
     abstract val layoutId: Int
+
+    val activityViewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
