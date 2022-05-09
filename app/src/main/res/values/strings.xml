@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Firebase-Test</string>
+    <string name="app_name">iWeather</string>
     //Login
     <string name="login_login">LOGIN</string>
     <string name="login_prompt_email">Email</string>

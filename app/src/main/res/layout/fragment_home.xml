@@ -8,38 +8,244 @@
 
         <variable
             name="viewModel"
-            type="com.example.firebase_test.ui.MainViewModel" />
+            type="com.example.i_weather.ui.home.HomeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_frame"
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/layout_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:clickable="true"
-        android:focusable="true">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_home_welcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_96sdp"
-            android:text="@string/login_welcome"
-            android:textAppearance="@style/heading1"
-            android:textColor="@color/purple_700"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/_10sdp"
+            tools:ignore="HardcodedText">
 
-        <Button
-            android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginBottom="@dimen/_64sdp"
-            android:text="@string/home_action_sign_out"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Longitude"
+                android:textColor="@color/error"
+                app:layout_constraintBottom_toTopOf="@id/edt_lon"
+                app:layout_constraintStart_toStartOf="@id/edt_lon" />
+
+            <EditText
+                android:id="@+id/edt_lon"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_100sdp"
+                android:background="@drawable/shape_ffffff_stroke_success"
+                android:inputType="numberDecimal"
+                android:paddingStart="@dimen/_4sdp"
+                android:paddingEnd="@dimen/_4sdp"
+                android:text="@={viewModel.lon}"
+                android:textColor="@color/success"
+                app:layout_constraintEnd_toStartOf="@id/edt_lat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Latitude"
+                android:textColor="@color/error"
+                app:layout_constraintBottom_toTopOf="@id/edt_lat"
+                app:layout_constraintStart_toStartOf="@id/edt_lat" />
+
+            <EditText
+                android:id="@+id/edt_lat"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_100sdp"
+                android:background="@drawable/shape_ffffff_stroke_success"
+                android:inputType="numberDecimal"
+                android:paddingStart="@dimen/_4sdp"
+                android:paddingEnd="@dimen/_4sdp"
+                android:text="@={viewModel.lat}"
+                android:textColor="@color/success"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/edt_lon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:enabled="false"
+                android:text="Submit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edt_lon" />
+
+            <TextView
+                android:id="@+id/tv_location_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:text="Location"
+                android:textColor="@color/success"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_submit" />
+
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:textColor="@color/error"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_location_title"
+                tools:text="Hanoi" />
+
+            <TextView
+                android:id="@+id/tv_coordinate_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Coordinate"
+                android:textColor="@color/secondary"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_location_title" />
+
+            <TextView
+                android:id="@+id/tv_coordinate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:textColor="@color/warning"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_coordinate_title"
+                tools:text="100|100" />
+
+            <TextView
+                android:id="@+id/tv_weather_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Weather"
+                android:textColor="@color/success"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_coordinate_title" />
+
+            <TextView
+                android:id="@+id/tv_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:textColor="@color/error"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_weather_title"
+                tools:text="Raining" />
+
+            <TextView
+                android:id="@+id/tv_temperature_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Temperature"
+                android:textColor="@color/secondary"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_weather_title" />
+
+            <TextView
+                android:id="@+id/tv_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:textColor="@color/warning"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_temperature_title"
+                tools:text="24 °C" />
+
+            <TextView
+                android:id="@+id/tv_wind_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Wind speed"
+                android:textColor="@color/success"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_temperature_title" />
+
+            <TextView
+                android:id="@+id/tv_wind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:textColor="@color/error"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_wind_title"
+                tools:text="3.6 km/h" />
+
+            <Button
+                android:id="@+id/btn_HaNoi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Ha Noi"
+                app:layout_constraintEnd_toStartOf="@id/btn_HCM"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_wind_title" />
+
+            <Button
+                android:id="@+id/btn_HCM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="HCM City"
+                app:layout_constraintEnd_toStartOf="@id/btn_Hue"
+                app:layout_constraintStart_toEndOf="@+id/btn_HaNoi"
+                app:layout_constraintTop_toBottomOf="@id/tv_wind_title" />
+
+            <Button
+                android:id="@+id/btn_Hue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Hue"
+                app:layout_constraintEnd_toStartOf="@id/btn_HaiPhong"
+                app:layout_constraintStart_toEndOf="@+id/btn_HCM"
+                app:layout_constraintTop_toBottomOf="@id/tv_wind_title" />
+
+            <Button
+                android:id="@+id/btn_HaiPhong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Hai Phong"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_Hue"
+                app:layout_constraintTop_toBottomOf="@id/tv_wind_title" />
+
+            <ProgressBar
+                android:id="@+id/loadingView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/dark"
+                android:padding="@dimen/_30sdp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/tv_wind_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_location_title" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>
