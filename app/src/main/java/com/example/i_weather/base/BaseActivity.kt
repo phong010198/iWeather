@@ -1,7 +1,10 @@
 package com.example.i_weather.base
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +13,7 @@ import androidx.databinding.ViewDataBinding
 import com.example.i_weather.R
 
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatActivity() {
+    val MY_PREFS_NAME = "MyPrefsFile"
 
     @get:LayoutRes
     abstract val layoutId: Int
@@ -66,5 +70,11 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
         builder.setMessage(message).setTitle(title)
         val dialog = builder.create()
         dialog.show()
+    }
+
+    fun hideKeyboard(v: View) {
+        val inputManager =
+            v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(v.windowToken, 0)
     }
 }

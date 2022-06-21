@@ -5,7 +5,6 @@ import androidx.viewbinding.BuildConfig
 import com.example.i_weather.data.api.ApiHelper
 import com.example.i_weather.data.api.ApiHelperImpl
 import com.example.i_weather.data.api.ApiService
-import com.example.i_weather.ui.UIUtil
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -23,7 +22,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class ApplicationModule {
     @Provides
-    fun provideBaseUrl() = "https://api.openweathermap.org/data/2.5/"
+    fun provideBaseUrl() = "https://api.openweathermap.org/"
 
     @Provides
     @Singleton
@@ -58,8 +57,4 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun getMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-
-    @Provides
-    @Singleton
-    fun provideUIUtil(): UIUtil = UIUtil()
 }

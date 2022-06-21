@@ -12,6 +12,7 @@
         <entry key="..\:/Users/black/StudioProjects/iWeather/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2095" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33695652173913043" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.33695652173913043" />
+        <entry key="app/src/main/res/layout/fragment_forecast.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33695652173913043" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.33695652173913043" />

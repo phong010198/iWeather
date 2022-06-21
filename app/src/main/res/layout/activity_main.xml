@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".main.MainActivity">
 
@@ -10,10 +11,192 @@
             type="com.example.i_weather.ui.MainViewModel" />
     </data>
 
-    <FrameLayout
-        android:id="@+id/layout_frame"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/dark" />
+        android:background="@color/dark"
+        tools:ignore="HardcodedText">
+
+        <!--        <FrameLayout-->
+        <!--            android:id="@+id/layout_frame"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            android:layout_marginTop="@dimen/margin_normal"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/cont_imv_weather" />-->
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp2_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cont_imv_weather" />
+
+        <TextView
+            android:id="@+id/tv_no_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:text="There is no city with this name"
+            android:textColor="@color/error"
+            android:textSize="@dimen/tv_small"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/edt_city"
+            app:layout_constraintStart_toStartOf="@id/edt_city" />
+
+        <EditText
+            android:id="@+id/edt_city"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_xlarge"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:background="@drawable/shape_ffffff_stroke_success"
+            android:inputType="text"
+            android:paddingStart="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_30sdp"
+            android:text="@={viewModel.city}"
+            android:textColor="@color/success"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintEnd_toStartOf="@id/swt_temperature"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imv_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:padding="@dimen/padding_small"
+            android:src="@drawable/ic_close_round"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/edt_city"
+            app:layout_constraintEnd_toEndOf="@id/edt_city"
+            app:layout_constraintTop_toTopOf="@id/edt_city"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/swt_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:checked="false"
+            android:textOff="°C"
+            android:textOn="°F"
+            app:layout_constraintBottom_toBottomOf="@id/edt_city"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/edt_city"
+            app:showText="true"
+            app:thumbTint="@color/success" />
+
+        <TextView
+            android:id="@+id/tv_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:textColor="@color/warning"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edt_city"
+            tools:text="Hanoi" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cont_imv_weather"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/margin_small"
+            app:cardBackgroundColor="@color/secondary"
+            app:cardCornerRadius="@dimen/_60sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_city">
+
+            <ImageView
+                android:id="@+id/imv_weather"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_03d"
+                tools:ignore="ContentDescription" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/btn_setHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_normal"
+            android:src="@drawable/ic_home"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@id/tv_city"
+            app:layout_constraintEnd_toEndOf="@id/swt_temperature"
+            app:layout_constraintStart_toStartOf="@id/swt_temperature"
+            app:layout_constraintTop_toTopOf="@id/tv_city"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_setHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_small"
+            android:text="Set as\nHome"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@id/btn_setHome"
+            app:layout_constraintStart_toStartOf="@id/btn_setHome"
+            app:layout_constraintTop_toBottomOf="@id/btn_setHome" />
+
+        <TextView
+            android:id="@+id/tv_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/error"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:background="@drawable/shape_ffffff_stroke_success"
+            android:padding="@dimen/_6sdp"
+            android:translationZ="10dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/swt_temperature"
+            app:layout_constraintStart_toStartOf="@id/edt_city"
+            app:layout_constraintTop_toBottomOf="@id/edt_city" />
+
+        <ProgressBar
+            android:id="@+id/loadingView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_blur_dark"
+            android:padding="@dimen/_120sdp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/loadingViewForecast"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_blur_dark"
+            android:padding="@dimen/_120sdp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

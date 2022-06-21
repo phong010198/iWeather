@@ -13,4 +13,8 @@
     <color name="success">#2fdb5f</color>
     <color name="warning">#f1c75d</color>
     <color name="error">#f77272</color>
+
+
+    <color name="bg_blur_white">#55FFFFFF</color>
+    <color name="bg_blur_dark">#552d2d2d</color>
 </resources>

@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.example.i_weather.ui.MainViewModel
 
 abstract class BaseFragmentWithoutViewModel<T : ViewDataBinding> : Fragment() {
@@ -25,12 +25,10 @@ abstract class BaseFragmentWithoutViewModel<T : ViewDataBinding> : Fragment() {
     lateinit var viewBinding: T
         private set
 
-    abstract val bindingVariable: Int
-
     @get:LayoutRes
     abstract val layoutId: Int
 
-    val activityViewModel: MainViewModel by viewModels()
+    val activityViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
