@@ -1,5 +1,6 @@
-package com.example.i_weather.data.model
+package com.example.i_weather.data.model.forecast
 
+import com.example.i_weather.data.model.*
 import com.google.gson.annotations.SerializedName
 
 data class Forecast(
@@ -12,5 +13,5 @@ data class Forecast(
     @SerializedName("pop") var pop: Double? = null,
     @SerializedName("rain") var rain: Rain3h? = Rain3h(),
     @SerializedName("sys") var sys: SysForecast? = SysForecast(),
-    @SerializedName("dt_txt") var dtTxt: String? = null
+    @SerializedName("dt_txt") var dt_txt: String? = null
 )

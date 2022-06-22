@@ -1,5 +1,6 @@
-package com.example.i_weather.data.model
+package com.example.i_weather.data.model.forecast
 
+import com.example.i_weather.data.model.City
 import com.google.gson.annotations.SerializedName
 
 data class ResultForecast(

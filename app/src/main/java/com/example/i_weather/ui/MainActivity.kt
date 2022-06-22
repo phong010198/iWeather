@@ -15,7 +15,7 @@ import com.example.i_weather.BR
 import com.example.i_weather.R
 import com.example.i_weather.base.BaseActivity
 import com.example.i_weather.data.model.Coord
-import com.example.i_weather.data.model.ResultGeocoding
+import com.example.i_weather.data.model.geo_coding.ResultGeocoding
 import com.example.i_weather.databinding.ActivityMainBinding
 import com.example.i_weather.ui.adapter.CityAdapter
 import com.example.i_weather.ui.home.CurrentFragment
@@ -39,6 +39,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun initView() {
+        viewDataBinding.root.setOnClickListener {
+            hideKeyboard(it)
+            viewDataBinding.rcvCity.gone()
+            viewDataBinding.edtCity.clearFocus()
+        }
         sharedPreferences = this.getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE)
         viewModel.defaultCoord.value = Coord(
             sharedPreferences.getString("lon", "105.8516")!!.toDouble(),
@@ -69,6 +74,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 hideKeyboard(this@MainActivity.viewDataBinding.root)
                 viewDataBinding.rcvCity.gone()
                 viewDataBinding.edtCity.clearFocus()
+                viewModel.city.value = ""
             }
         })
         viewDataBinding.rcvCity.layoutManager = LinearLayoutManager(this)
@@ -149,6 +155,39 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         })
     }
 
+    private fun updateColor(id: Int) {
+        when (id) {
+            in 200..299 -> {
+                //Thunderstorm
+                viewDataBinding.root.background = this.getDrawable(R.drawable.bg_thunderstorm)
+            }
+            in 300..399 -> {
+                //Drizzle
+                viewDataBinding.root.background = this.getDrawable(R.drawable.bg_thunderstorm)
+            }
+            in 500..599 -> {
+                //Rain
+                viewDataBinding.root.background = this.getDrawable(R.drawable.bg_rain)
+            }
+            in 600..699 -> {
+                //Snow
+                viewDataBinding.root.background = this.getDrawable(R.drawable.bg_rain)
+            }
+            in 700..799 -> {
+                //Atmosphere
+                viewDataBinding.root.background = this.getDrawable(R.drawable.bg_rain)
+            }
+            800 -> {
+                //Clear
+                viewDataBinding.root.background = this.getDrawable(R.drawable.bg_clear_day)
+            }
+            else -> {
+                //Clouds
+                viewDataBinding.root.background = this.getDrawable(R.drawable.bg_clouds)
+            }
+        }
+    }
+
     override fun setupObserver() {
         viewModel.resultCity.observe(this) {
             cityAdapter.setData(it)
@@ -179,6 +218,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             } else {
                 viewDataBinding.btnSetHome.visible()
             }
+            updateColor(it.weather[0].id!!)
         }
     }
 

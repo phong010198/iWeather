@@ -1,8 +1,8 @@
 package com.example.i_weather.data.api
 
-import com.example.i_weather.data.model.ResultCurrentWeather
-import com.example.i_weather.data.model.ResultForecast
-import com.example.i_weather.data.model.ResultGeocoding
+import com.example.i_weather.data.model.current_weather.ResultCurrentWeather
+import com.example.i_weather.data.model.forecast.ResultForecast
+import com.example.i_weather.data.model.geo_coding.ResultGeocoding
 import io.reactivex.Observable
 
 interface ApiHelper {

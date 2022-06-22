@@ -19,27 +19,42 @@
             android:focusable="true"
             tools:ignore="HardcodedText">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cont_imv_weather"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:id="@+id/cont_imv_weather"-->
+            <!--                android:layout_width="@dimen/_65sdp"-->
+            <!--                android:layout_height="@dimen/_65sdp"-->
+            <!--                android:layout_marginTop="@dimen/margin_small"-->
+            <!--                android:layout_marginEnd="@dimen/margin_xlarge"-->
+            <!--                app:cardBackgroundColor="@color/secondary"-->
+            <!--                app:cardCornerRadius="@dimen/_60sdp"-->
+            <!--                app:layout_constraintEnd_toStartOf="@id/tv_temperature"-->
+            <!--                app:layout_constraintHorizontal_chainStyle="packed"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent">-->
+
+            <!--                <ImageView-->
+            <!--                    android:id="@+id/imv_weather"-->
+            <!--                    android:layout_width="@dimen/_55sdp"-->
+            <!--                    android:layout_height="@dimen/_55sdp"-->
+            <!--                    android:layout_gravity="center"-->
+            <!--                    android:src="@drawable/ic_03d"-->
+            <!--                    tools:ignore="ContentDescription" />-->
+            <!--            </androidx.cardview.widget.CardView>-->
+
+
+            <ImageView
+                android:id="@+id/imv_weather"
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="@dimen/_65sdp"
+                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginEnd="@dimen/margin_xlarge"
-                app:cardBackgroundColor="@color/secondary"
-                app:cardCornerRadius="@dimen/_60sdp"
+                android:src="@drawable/ic_03d"
                 app:layout_constraintEnd_toStartOf="@id/tv_temperature"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/imv_weather"
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="@dimen/_50sdp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_03d"
-                    tools:ignore="ContentDescription" />
-            </androidx.cardview.widget.CardView>
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/tv_temperature"
@@ -50,8 +65,8 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/tv_weather"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/cont_imv_weather"
-                app:layout_constraintTop_toTopOf="@id/cont_imv_weather"
+                app:layout_constraintStart_toEndOf="@id/imv_weather"
+                app:layout_constraintTop_toTopOf="@id/imv_weather"
                 app:layout_constraintVertical_chainStyle="packed"
                 tools:text="24°C" />
 
@@ -61,11 +76,76 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/dark"
                 android:textSize="@dimen/tv_large"
-                app:layout_constraintBottom_toBottomOf="@id/cont_imv_weather"
+                app:layout_constraintBottom_toTopOf="@id/tv_weather_des"
                 app:layout_constraintEnd_toEndOf="@id/tv_temperature"
                 app:layout_constraintStart_toStartOf="@id/tv_temperature"
                 app:layout_constraintTop_toBottomOf="@id/tv_temperature"
+                app:layout_constraintVertical_chainStyle="packed"
                 tools:text="Raining" />
+
+            <TextView
+                android:id="@+id/tv_weather_des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark"
+                android:textSize="@dimen/tv_small"
+                app:layout_constraintBottom_toBottomOf="@id/imv_weather"
+                app:layout_constraintEnd_toEndOf="@id/tv_temperature"
+                app:layout_constraintStart_toStartOf="@id/tv_temperature"
+                app:layout_constraintTop_toBottomOf="@id/tv_weather"
+                tools:text="(light rain)" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_feelLike"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_large"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@+id/imv_weather">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imv_feelLike"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_margin="@dimen/margin_medium"
+                        android:src="@drawable/ic_feed_like"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_feelLike_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_normal"
+                        android:layout_marginTop="@dimen/margin_large"
+                        android:layout_marginBottom="@dimen/margin_large"
+                        android:text="Feels like"
+                        android:textColor="@color/dark"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/imv_feelLike"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_feelLike"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_large"
+                        android:textColor="@color/error"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_feelLike_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_feelLike_title"
+                        tools:text="27°C" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_humidity"
@@ -73,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_large"
                 app:cardCornerRadius="@dimen/_10sdp"
-                app:layout_constraintTop_toBottomOf="@+id/cont_imv_weather">
+                app:layout_constraintTop_toBottomOf="@+id/card_feelLike">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

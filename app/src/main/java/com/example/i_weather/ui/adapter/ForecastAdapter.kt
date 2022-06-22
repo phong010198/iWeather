@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.i_weather.R
-import com.example.i_weather.data.model.Forecast
+import com.example.i_weather.data.model.forecast.Forecast
 import com.example.i_weather.databinding.ItemForecastBinding
 
 class ForecastAdapter(
@@ -36,12 +36,18 @@ class ForecastAdapter(
                 .centerCrop()
                 .placeholder(R.drawable.ic_03d)
                 .into(binding.imvWeather)
-            binding.tvTemperature.text =
+            binding.tvTempMin.text =
                 if (isFahrenheit) String.format(
                     "%.2f°F",
-                    data[position].main!!.temp!! * 9 / 5 + 32
+                    data[position].main!!.temp_min!! * 9 / 5 + 32
                 )
-                else "${data[position].main!!.temp!!}°C"
+                else "${data[position].main!!.temp_min!!}°C"
+            binding.tvTempMax.text =
+                if (isFahrenheit) String.format(
+                    "%.2f°F",
+                    data[position].main!!.temp_max!! * 9 / 5 + 32
+                )
+                else "${data[position].main!!.temp_max!!}°C"
             binding.tvHumidity.text = "${data[position].main!!.humidity}%"
         }
     }

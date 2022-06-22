@@ -1,4 +1,4 @@
-package com.example.i_weather.data.model
+package com.example.i_weather.data.model.geo_coding
 
 import com.google.gson.annotations.SerializedName
 
@@ -15,7 +15,7 @@ data class LocalNames(
     @SerializedName("en") var en: String? = null,
     @SerializedName("eu") var eu: String? = null,
     @SerializedName("fa") var fa: String? = null,
-    @SerializedName("feature_name") var featureName: String? = null,
+    @SerializedName("feature_name") var feature_name: String? = null,
     @SerializedName("fi") var fi: String? = null,
     @SerializedName("fr") var fr: String? = null,
     @SerializedName("gl") var gl: String? = null,

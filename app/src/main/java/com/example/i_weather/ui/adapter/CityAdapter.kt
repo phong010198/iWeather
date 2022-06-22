@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.i_weather.R
-import com.example.i_weather.data.model.ResultGeocoding
+import com.example.i_weather.data.model.geo_coding.ResultGeocoding
 import com.example.i_weather.databinding.ItemCityBinding
 import java.util.*
 

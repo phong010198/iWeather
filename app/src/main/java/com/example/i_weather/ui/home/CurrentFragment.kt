@@ -53,6 +53,12 @@ class CurrentFragment : BaseFragmentWithoutViewModel<FragmentCurrentBinding>() {
                         activityViewModel.resultCurrentWeather.value!!.main!!.temp!! * 9 / 5 + 32
                     )
                     else "${activityViewModel.resultCurrentWeather.value!!.main!!.temp!!}°C"
+                viewBinding.tvFeelLike.text =
+                    if (it) String.format(
+                        "%.2f°F",
+                        activityViewModel.resultCurrentWeather.value!!.main!!.feels_like!! * 9 / 5 + 32
+                    )
+                    else "${activityViewModel.resultCurrentWeather.value!!.main!!.feels_like!!}°C"
             }
         }
         activityViewModel.resultCurrentWeather.observe(viewLifecycleOwner) {
@@ -64,6 +70,12 @@ class CurrentFragment : BaseFragmentWithoutViewModel<FragmentCurrentBinding>() {
                         it.main!!.temp!! * 9 / 5 + 32
                     )
                     else "${it.main!!.temp!!}°C"
+                tvFeelLike.text =
+                    if (activityViewModel.isFahrenheit.value == true) String.format(
+                        "%.2f°F",
+                        it.main!!.feels_like!! * 9 / 5 + 32
+                    )
+                    else "${it.main!!.feels_like!!}°C"
                 Glide.with(requireContext())
                     .load("https://openweathermap.org/img/wn/" + it.weather[0].icon + "@2x.png")
                     .centerCrop()

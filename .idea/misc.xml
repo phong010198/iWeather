@@ -10,7 +10,10 @@
         <entry key="..\:/Users/black/StudioProjects/iWeather/app/src/main/res/layout/fragment_home.xml" value="0.3875" />
         <entry key="..\:/Users/black/StudioProjects/iWeather/app/src/main/res/layout/fragment_login.xml" value="0.3875" />
         <entry key="..\:/Users/black/StudioProjects/iWeather/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2095" />
+        <entry key="app/src/main/res/drawable/bg_clouds.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/bg_main.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable/bg_rain.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable/bg_thunderstorm.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.238" />
         <entry key="app/src/main/res/drawable/ic_humidity.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/ic_wind.xml" value="0.225" />

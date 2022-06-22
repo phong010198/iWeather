@@ -4,9 +4,9 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.i_weather.base.BaseViewModel
 import com.example.i_weather.data.model.Coord
-import com.example.i_weather.data.model.ResultCurrentWeather
-import com.example.i_weather.data.model.ResultForecast
-import com.example.i_weather.data.model.ResultGeocoding
+import com.example.i_weather.data.model.current_weather.ResultCurrentWeather
+import com.example.i_weather.data.model.forecast.ResultForecast
+import com.example.i_weather.data.model.geo_coding.ResultGeocoding
 import com.example.i_weather.data.respository.ApiRepository
 import com.example.i_weather.util.NetworkHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
