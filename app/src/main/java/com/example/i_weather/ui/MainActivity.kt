@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.bumptech.glide.Glide
 import com.example.i_weather.BR
 import com.example.i_weather.R
 import com.example.i_weather.base.BaseActivity
@@ -52,7 +51,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         viewModel.currentCoord.value = viewModel.defaultCoord.value
 
         viewDataBinding.btnSetHome.setOnClickListener { setAsHome() }
-        viewDataBinding.tvSetHome.setOnClickListener { setAsHome() }
         val pagerAdapter = ScreenSlidePagerAdapter(this)
         viewDataBinding.vp2Main.adapter = pagerAdapter
 
@@ -121,7 +119,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         editor.commit()
         Toast.makeText(this, "New Home has been set", Toast.LENGTH_SHORT).show()
         viewDataBinding.btnSetHome.gone()
-        viewDataBinding.tvSetHome.gone()
     }
 
     private fun getCity(city: String) {
@@ -179,16 +176,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         viewModel.resultCurrentWeather.observe(this) {
             if (it.coord!!.lon == viewModel.defaultCoord.value!!.lon && it.coord!!.lat == viewModel.defaultCoord.value!!.lat) {
                 viewDataBinding.btnSetHome.gone()
-                viewDataBinding.tvSetHome.gone()
             } else {
                 viewDataBinding.btnSetHome.visible()
-                viewDataBinding.tvSetHome.visible()
             }
-            Glide.with(this)
-                .load("https://openweathermap.org/img/wn/" + it.weather[0].icon + "@2x.png")
-                .centerCrop()
-                .placeholder(R.drawable.ic_03d)
-                .into(viewDataBinding.imvWeather)
         }
     }
 

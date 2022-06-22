@@ -17,7 +17,7 @@ interface ApiService {
     @GET("geo/1.0/direct?appid=8a162d98c9520cde549e914e6fd84ec6&limit=7")
     fun getCity(@Query("q") city: String): Observable<MutableList<ResultGeocoding>>
 
-    @GET("data/2.5/forecast?appid=8a162d98c9520cde549e914e6fd84ec6&units=metric&cnt=9")
+    @GET("data/2.5/forecast?appid=8a162d98c9520cde549e914e6fd84ec6&units=metric&cnt=8")
     fun getForecast(
         @Query("lon") lon: Double,
         @Query("lat") lat: Double

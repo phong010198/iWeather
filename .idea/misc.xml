@@ -10,12 +10,25 @@
         <entry key="..\:/Users/black/StudioProjects/iWeather/app/src/main/res/layout/fragment_home.xml" value="0.3875" />
         <entry key="..\:/Users/black/StudioProjects/iWeather/app/src/main/res/layout/fragment_login.xml" value="0.3875" />
         <entry key="..\:/Users/black/StudioProjects/iWeather/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2095" />
+        <entry key="app/src/main/res/drawable/bg_main.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.238" />
+        <entry key="app/src/main/res/drawable/ic_humidity.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable/ic_wind.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable/shape_000000_stroke_success.xml" value="0.238" />
+        <entry key="app/src/main/res/drawable/shape_000000_stroke_warning.xml" value="0.238" />
+        <entry key="app/src/main/res/drawable/shape_dark_stroke_success.xml" value="0.238" />
+        <entry key="app/src/main/res/drawable/shape_ffffff_stroke_success.xml" value="0.337" />
+        <entry key="app/src/main/res/drawable/shape_ligtht_blur_stroke_warning.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable/shape_ligtht_stroke_warning.xml" value="0.225" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33695652173913043" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.33695652173913043" />
+        <entry key="app/src/main/res/layout/fragment_current.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_forecast.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33695652173913043" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.33695652173913043" />
+        <entry key="app/src/main/res/layout/item_city.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/item_forecast.xml" value="0.37604166666666666" />
       </map>
     </option>
   </component>

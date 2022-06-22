@@ -3,6 +3,7 @@ package com.example.i_weather.ui.home
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.i_weather.R
 import com.example.i_weather.base.BaseFragmentWithoutViewModel
 import com.example.i_weather.data.model.Coord
@@ -56,16 +57,25 @@ class CurrentFragment : BaseFragmentWithoutViewModel<FragmentCurrentBinding>() {
         }
         activityViewModel.resultCurrentWeather.observe(viewLifecycleOwner) {
             with(viewBinding) {
-                tvLocation.text = it.name
-                tvCoordinate.text = "${it.coord!!.lon} | ${it.coord!!.lat}"
-                tvWeather.text = "${it.weather[0].main} (${it.weather[0].description})"
+                tvWeather.text = it.weather[0].main
                 tvTemperature.text =
                     if (activityViewModel.isFahrenheit.value == true) String.format(
                         "%.2f°F",
                         it.main!!.temp!! * 9 / 5 + 32
                     )
                     else "${it.main!!.temp!!}°C"
+                Glide.with(requireContext())
+                    .load("https://openweathermap.org/img/wn/" + it.weather[0].icon + "@2x.png")
+                    .centerCrop()
+                    .placeholder(R.drawable.ic_03d)
+                    .into(viewBinding.imvWeather)
                 tvHumidity.text = "${it.main!!.humidity}%"
+                tvWind.text = "${it.wind!!.speed} km/h"
+                val sdf = java.text.SimpleDateFormat("HH:mm")
+                var date = java.util.Date(it.sys!!.sunrise!!.toLong() * 1000)
+                tvSunrise.text = sdf.format(date)
+                date = java.util.Date(it.sys!!.sunset!!.toLong() * 1000)
+                tvSunset.text = sdf.format(date)
             }
         }
     }

@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/dark"
+        android:background="@drawable/bg_main"
         tools:ignore="HardcodedText">
 
         <!--        <FrameLayout-->
@@ -35,7 +35,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cont_imv_weather" />
+            app:layout_constraintTop_toBottomOf="@id/tv_city" />
 
         <TextView
             android:id="@+id/tv_no_city"
@@ -56,12 +56,12 @@
             android:layout_marginStart="@dimen/margin_large"
             android:layout_marginTop="@dimen/margin_xlarge"
             android:layout_marginEnd="@dimen/margin_small"
-            android:background="@drawable/shape_ffffff_stroke_success"
+            android:background="@drawable/shape_ligtht_blur_stroke_warning"
             android:inputType="text"
             android:paddingStart="@dimen/_8sdp"
             android:paddingEnd="@dimen/_30sdp"
             android:text="@={viewModel.city}"
-            android:textColor="@color/success"
+            android:textColor="@color/dark"
             android:textSize="@dimen/_12sdp"
             app:layout_constraintEnd_toStartOf="@id/swt_temperature"
             app:layout_constraintStart_toStartOf="parent"
@@ -92,39 +92,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/edt_city"
             app:showText="true"
-            app:thumbTint="@color/success" />
+            app:thumbTint="@color/error" />
 
         <TextView
             android:id="@+id/tv_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_normal"
-            android:textColor="@color/warning"
+            android:textColor="@color/dark"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edt_city"
             tools:text="Hanoi" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cont_imv_weather"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="@dimen/_60sdp"
-            android:layout_marginTop="@dimen/margin_small"
-            app:cardBackgroundColor="@color/secondary"
-            app:cardCornerRadius="@dimen/_60sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_city">
-
-            <ImageView
-                android:id="@+id/imv_weather"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_03d"
-                tools:ignore="ContentDescription" />
-        </androidx.cardview.widget.CardView>
 
         <ImageView
             android:id="@+id/btn_setHome"
@@ -140,19 +121,6 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/tv_setHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_small"
-            android:text="Set as\nHome"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="@id/btn_setHome"
-            app:layout_constraintStart_toStartOf="@id/btn_setHome"
-            app:layout_constraintTop_toBottomOf="@id/btn_setHome" />
-
-        <TextView
             android:id="@+id/tv_default"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -166,8 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_2sdp"
             android:layout_marginEnd="@dimen/margin_medium"
-            android:background="@drawable/shape_ffffff_stroke_success"
-            android:padding="@dimen/_6sdp"
+            android:background="@drawable/shape_ligtht_stroke_warning"
             android:translationZ="10dp"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@id/swt_temperature"

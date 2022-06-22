@@ -14,7 +14,10 @@
     <color name="warning">#f1c75d</color>
     <color name="error">#f77272</color>
 
+    <color name="transparent">#00000000</color>
+
 
     <color name="bg_blur_white">#55FFFFFF</color>
     <color name="bg_blur_dark">#552d2d2d</color>
+    <color name="light_blur">#55f4f4f4</color>
 </resources>
